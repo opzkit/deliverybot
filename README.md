@@ -1,7 +1,5 @@
 # Deliverybot
 
-https://deliverybot.dev
-
 Simple Continuous Delivery for GitHub: Fast, safe and secure Continous Delivery
 pipelines you can setup in minutes. Fully open source.
 
@@ -30,5 +28,5 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE) © 2019 Deliverybot (https://github.com/deliverybot/deliverybot)
+[MIT](LICENSE) © 2019 Deliverybot (https://github.com/cloudposse/deliverybot)
 
