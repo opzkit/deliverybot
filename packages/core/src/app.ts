@@ -48,7 +48,7 @@ export function load(services: Services, apps: RegisterFunc[], opts: Options) {
   // Hack for client-sessions. It uses a different field to query whether the
   // connection is secure.
   app.use((req: Request, res: Response, next: NextFunction) => {
-    if (req.secure) (req.connection as any).proxySecure = true;
+    (req.connection as any).proxySecure = true;
     next();
   });
 
