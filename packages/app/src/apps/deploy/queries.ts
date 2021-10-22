@@ -475,8 +475,8 @@ export async function config(
   repo: string,
   branch: string,
 ): Promise<Config> {
-  const newFileUrl = newDeployFileUrl(owner, repo);
-  const editFileUrl = editDeployFileUrl(owner, repo);
+  const newFileUrl = newDeployFileUrl(owner, repo, branch);
+  const editFileUrl = editDeployFileUrl(owner, repo, branch);
 
   const conf: Config = {
     yaml: "",

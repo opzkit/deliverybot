@@ -65,7 +65,7 @@ export async function Commits({
     repo.owner,
     repo.repo,
     repo.id,
-    branch || "master",
+    branch || repo.defaultBranch,
     options,
   );
 

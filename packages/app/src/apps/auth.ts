@@ -1,12 +1,14 @@
 import { Dependencies, Octokit } from "@deliverybot/core";
-import { Response, Request, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import fetch from "node-fetch";
 
 export interface Repo {
   owner: string;
   repo: string;
   id: number;
+  defaultBranch: string;
 }
+
 export interface User {
   id: string;
   username: string;
@@ -74,8 +76,8 @@ export async function verifyRepo(
     req.session.verified &&
     req.session.verified[`${owner}/${repo}`]
   ) {
-    const id = req.session.verified[`${owner}/${repo}`];
-    req.user!.repo = { owner, repo, id };
+    const { id, defaultBranch } = req.session.verified[`${owner}/${repo}`];
+    req.user!.repo = { owner, repo, id, defaultBranch };
     next();
     return;
   }
@@ -89,8 +91,8 @@ export async function verifyRepo(
     return;
   }
   req.session!.verified = req.session.verified || {};
-  req.session.verified[`${owner}/${repo}`] = id;
-  req.user!.repo = { owner, repo, id };
+  req.session.verified[`${owner}/${repo}`] = { id, defaultBranch: repoData.data.default_branch };
+  req.user!.repo = { owner, repo, id, defaultBranch: repoData.data.default_branch };
   next();
 }
 

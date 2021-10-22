@@ -181,7 +181,7 @@ export function deploy({ kvService, app, csrf, messageService }: Dependencies) {
 
   async function redirect(req: AuthedRequest, res: Response) {
     const { owner, repo } = req.params;
-    const branch = "master";
-    res.redirect(`/${owner}/${repo}/branch/${branch}`);
+    const { defaultBranch: branch } = req.session.verified[`${owner}/${repo}`];
+    res.redirect(`/${owner}/${repo}/branch/${branch || "master"}`);
   }
 }

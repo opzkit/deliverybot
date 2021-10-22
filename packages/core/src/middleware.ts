@@ -1,8 +1,12 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import { v4 as uuid } from "uuid";
 import { logger } from "./logger";
 
 export function logRequests(req: Request, res: Response, next: NextFunction) {
+  if (req.url === "/health") {
+    next();
+    return;
+  }
   const start = Date.now();
   req.context = {};
   req.requestId = uuid();

@@ -1,0 +1,9 @@
+.github
+.env
+.env.example
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+LICENSE
+README.md
+k8s
+node_modules
