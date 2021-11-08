@@ -43,7 +43,7 @@ export function auto(
   ) {
     try {
       let anyAdded = false;
-      const conf = await config(context.github, context.repo());
+      const conf = await config(context.github, { ...context.repo(), ref });
       for (const target in conf) {
         const targetVal = conf[target]!;
         if (!match(targetVal.auto_deploy_on, matchRef)) {
